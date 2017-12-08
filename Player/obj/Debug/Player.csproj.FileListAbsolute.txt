@@ -1,0 +1,10 @@
+c:\users\anci_oq88\documents\visual studio 2013\Projects\Player\Player\bin\Debug\Player.exe.config
+c:\users\anci_oq88\documents\visual studio 2013\Projects\Player\Player\obj\Debug\Player.csprojResolveAssemblyReference.cache
+c:\users\anci_oq88\documents\visual studio 2013\Projects\Player\Player\obj\Debug\Player.Player.resources
+c:\users\anci_oq88\documents\visual studio 2013\Projects\Player\Player\obj\Debug\Player.Properties.Resources.resources
+c:\users\anci_oq88\documents\visual studio 2013\Projects\Player\Player\obj\Debug\Player.SoundList.resources
+c:\users\anci_oq88\documents\visual studio 2013\Projects\Player\Player\obj\Debug\Player.csproj.GenerateResource.Cache
+c:\users\anci_oq88\documents\visual studio 2013\Projects\Player\Player\bin\Debug\Player.exe
+c:\users\anci_oq88\documents\visual studio 2013\Projects\Player\Player\bin\Debug\Player.pdb
+c:\users\anci_oq88\documents\visual studio 2013\Projects\Player\Player\obj\Debug\Player.exe
+c:\users\anci_oq88\documents\visual studio 2013\Projects\Player\Player\obj\Debug\Player.pdb
