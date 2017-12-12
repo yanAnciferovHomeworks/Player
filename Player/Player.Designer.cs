@@ -36,50 +36,54 @@
             this.SoundBar = new System.Windows.Forms.TrackBar();
             this.TimeBar = new System.Windows.Forms.TrackBar();
             this.Name = new System.Windows.Forms.Label();
+            this.Time = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SoundBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeBar)).BeginInit();
             this.SuspendLayout();
             // 
-            // Prev
+            // _prev
             // 
             this._prev.Location = new System.Drawing.Point(31, 81);
-            this._prev.Name = "Prev";
+            this._prev.Name = "_prev";
             this._prev.Size = new System.Drawing.Size(31, 23);
             this._prev.TabIndex = 0;
             this._prev.Text = "<<";
             this._prev.UseVisualStyleBackColor = true;
             // 
-            // Play
+            // _play
             // 
             this._play.Location = new System.Drawing.Point(79, 81);
-            this._play.Name = "Play";
+            this._play.Name = "_play";
             this._play.Size = new System.Drawing.Size(31, 23);
             this._play.TabIndex = 1;
             this._play.Text = "Pl";
             this._play.UseVisualStyleBackColor = true;
+            this._play.Click += new System.EventHandler(this._play_Click);
             // 
-            // Pause
+            // _pause
             // 
             this._pause.Location = new System.Drawing.Point(135, 81);
-            this._pause.Name = "Pause";
+            this._pause.Name = "_pause";
             this._pause.Size = new System.Drawing.Size(31, 23);
             this._pause.TabIndex = 2;
             this._pause.Text = "P";
             this._pause.UseVisualStyleBackColor = true;
+            this._pause.Click += new System.EventHandler(this._pause_Click);
             // 
-            // Stop
+            // _stop
             // 
             this._stop.Location = new System.Drawing.Point(191, 81);
-            this._stop.Name = "Stop";
+            this._stop.Name = "_stop";
             this._stop.Size = new System.Drawing.Size(31, 23);
             this._stop.TabIndex = 3;
             this._stop.Text = "S";
             this._stop.UseVisualStyleBackColor = true;
+            this._stop.Click += new System.EventHandler(this._stop_Click);
             // 
-            // Next
+            // _next
             // 
             this._next.Location = new System.Drawing.Point(251, 81);
-            this._next.Name = "Next";
+            this._next.Name = "_next";
             this._next.Size = new System.Drawing.Size(31, 23);
             this._next.TabIndex = 4;
             this._next.Text = ">>";
@@ -87,20 +91,26 @@
             // 
             // SoundBar
             // 
-            this.SoundBar.Location = new System.Drawing.Point(305, 81);
+            this.SoundBar.Location = new System.Drawing.Point(322, 81);
+            this.SoundBar.Maximum = 100;
             this.SoundBar.Name = "SoundBar";
             this.SoundBar.Size = new System.Drawing.Size(115, 45);
             this.SoundBar.TabIndex = 5;
             this.SoundBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.SoundBar.Value = 50;
+            this.SoundBar.Scroll += new System.EventHandler(this.SoundBar_Scroll);
             // 
             // TimeBar
             // 
+            this.TimeBar.LargeChange = 10;
             this.TimeBar.Location = new System.Drawing.Point(12, 30);
             this.TimeBar.Maximum = 100;
             this.TimeBar.Name = "TimeBar";
-            this.TimeBar.Size = new System.Drawing.Size(393, 45);
+            this.TimeBar.Size = new System.Drawing.Size(381, 45);
+            this.TimeBar.SmallChange = 5;
             this.TimeBar.TabIndex = 6;
             this.TimeBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.TimeBar.Scroll += new System.EventHandler(this.TimeBar_Scroll);
             // 
             // Name
             // 
@@ -110,11 +120,20 @@
             this.Name.Size = new System.Drawing.Size(0, 13);
             this.Name.TabIndex = 7;
             // 
+            // Time
+            // 
+            this.Time.AutoSize = true;
+            this.Time.Location = new System.Drawing.Point(393, 35);
+            this.Time.Name = "Time";
+            this.Time.Size = new System.Drawing.Size(0, 13);
+            this.Time.TabIndex = 8;
+            // 
             // Player
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 116);
+            this.ClientSize = new System.Drawing.Size(449, 116);
+            this.Controls.Add(this.Time);
             this.Controls.Add(this.Name);
             this.Controls.Add(this.TimeBar);
             this.Controls.Add(this.SoundBar);
@@ -125,6 +144,7 @@
             this.Controls.Add(this._prev);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            //this.Name = "Player";
             this.ShowIcon = false;
             ((System.ComponentModel.ISupportInitialize)(this.SoundBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeBar)).EndInit();
@@ -143,6 +163,7 @@
         private System.Windows.Forms.TrackBar SoundBar;
         private System.Windows.Forms.TrackBar TimeBar;
         private System.Windows.Forms.Label Name;
+        private System.Windows.Forms.Label Time;
     }
 }
 

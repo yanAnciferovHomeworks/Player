@@ -8,51 +8,69 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Player.Views;
+using Player.Presenters;
 
 namespace Player
 {
     public partial class Player : Form, IViewPlayer
     {
+
+        public event EventHandler Play;
+        public event EventHandler VolumeScroll;
+        public event EventHandler TimeScroll;
+        public event EventHandler Pause;
+        public event EventHandler Stop;
+
         public Player()
         {
             InitializeComponent();
         }
 
-        public void Play()
+   
+
+        private void _play_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Play(sender,e);
+            _pause.Enabled = true;
         }
 
-        public void Next()
+        public void SetName(string name)
         {
-            throw new NotImplementedException();
+            Name.Text = name;
         }
 
-        public void Prev()
+        public void SetTime(TimeSpan time)
         {
-            throw new NotImplementedException();
+            Time.Text = time.Minutes + ":" + time.Seconds;
         }
 
-        public void Stop()
+        private void SoundBar_Scroll(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            VolumeScroll(sender, e);
         }
 
-        public void Pause()
+        public void SetTimePosition(int position)
         {
-            throw new NotImplementedException();
+            
+             TimeBar.Value = position;
+           
         }
 
-        public string TrackName
+        private void TimeBar_Scroll(object sender, EventArgs e)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            
+             TimeScroll(sender, e);
+        }
+
+        private void _stop_Click(object sender, EventArgs e)
+        {
+            _pause.Enabled = false;
+            Stop(sender, e);
+        }
+
+        private void _pause_Click(object sender, EventArgs e)
+        {
+            Pause(sender, e);
         }
     }
 }

@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.PlayList = new System.Windows.Forms.ListBox();
             this.Add = new System.Windows.Forms.Button();
             this.Remove = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
             this.Load = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listBox1
+            // PlayList
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 12);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(260, 186);
-            this.listBox1.TabIndex = 0;
+            this.PlayList.FormattingEnabled = true;
+            this.PlayList.Location = new System.Drawing.Point(12, 12);
+            this.PlayList.Name = "PlayList";
+            this.PlayList.Size = new System.Drawing.Size(260, 186);
+            this.PlayList.TabIndex = 0;
+            this.PlayList.DoubleClick += new System.EventHandler(this.PlayList_DoubleClick);
             // 
             // Add
             // 
@@ -51,6 +52,7 @@
             this.Add.TabIndex = 1;
             this.Add.Text = "+";
             this.Add.UseVisualStyleBackColor = true;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // Remove
             // 
@@ -60,6 +62,7 @@
             this.Remove.TabIndex = 2;
             this.Remove.Text = "-";
             this.Remove.UseVisualStyleBackColor = true;
+            this.Remove.Click += new System.EventHandler(this.Remove_Click);
             // 
             // Save
             // 
@@ -88,7 +91,7 @@
             this.Controls.Add(this.Save);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.Add);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.PlayList);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SoundList";
@@ -100,7 +103,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox PlayList;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button Remove;
         private System.Windows.Forms.Button Save;
