@@ -16,6 +16,8 @@ namespace Player.Views
         event EventHandler Stop;
         event EventHandler VolumeScroll;
         event EventHandler TimeScroll;
+        event EventHandler Next;
+        event EventHandler Prev;
         void SetName(string name);
         void SetTime(TimeSpan time);
         void SetTimePosition(int position);
@@ -28,11 +30,20 @@ namespace Player.Views
             set;
         }
 
+        int SelectedIndex
+        {
+            get;
+            set;
+        }
+
         event EventHandler LoadTrack;
 
         event EventHandler RemoveTrack;
 
         event EventHandler DoubleClockOnTrack;
+
+        event EventHandler OnSelectedTrack;
+
         void SetBindingData(BindingList<Track> controlBindings);
 
         void AddTrackToList(Track track);

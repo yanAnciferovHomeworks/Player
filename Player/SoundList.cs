@@ -32,7 +32,7 @@ namespace Player
         }
 
         public event EventHandler LoadTrack;
-
+        public event EventHandler OnSelectedTrack;
         public event EventHandler RemoveTrack;
         public event EventHandler DoubleClockOnTrack;
         public void AddTrackToList(Track track)
@@ -60,5 +60,25 @@ namespace Player
         {
             DoubleClockOnTrack(sender, e);
         }
+
+
+        public int SelectedIndex
+        {
+            get
+            {
+                return PlayList.SelectedIndex;
+            }
+            set
+            {
+                PlayList.SelectedIndex = value;
+            }
+        }
+
+        private void PlayList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OnSelectedTrack(sender,e);
+        }
+
+
     }
 }

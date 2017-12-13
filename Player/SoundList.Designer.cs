@@ -42,6 +42,7 @@
             this.PlayList.Name = "PlayList";
             this.PlayList.Size = new System.Drawing.Size(260, 186);
             this.PlayList.TabIndex = 0;
+            this.PlayList.SelectedIndexChanged += new System.EventHandler(this.PlayList_SelectedIndexChanged);
             this.PlayList.DoubleClick += new System.EventHandler(this.PlayList_DoubleClick);
             // 
             // Add

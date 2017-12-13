@@ -49,6 +49,7 @@
             this._prev.TabIndex = 0;
             this._prev.Text = "<<";
             this._prev.UseVisualStyleBackColor = true;
+            this._prev.Click += new System.EventHandler(this._prev_Click);
             // 
             // _play
             // 
@@ -88,6 +89,7 @@
             this._next.TabIndex = 4;
             this._next.Text = ">>";
             this._next.UseVisualStyleBackColor = true;
+            this._next.Click += new System.EventHandler(this._next_Click);
             // 
             // SoundBar
             // 
@@ -144,7 +146,6 @@
             this.Controls.Add(this._prev);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            //this.Name = "Player";
             this.ShowIcon = false;
             ((System.ComponentModel.ISupportInitialize)(this.SoundBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeBar)).EndInit();

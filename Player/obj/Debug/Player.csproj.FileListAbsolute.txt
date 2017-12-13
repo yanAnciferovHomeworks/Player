@@ -21,3 +21,15 @@ C:\Users\Yan\Desktop\Player\Player\bin\Debug\Player.exe
 C:\Users\Yan\Desktop\Player\Player\bin\Debug\Player.pdb
 C:\Users\Yan\Desktop\Player\Player\bin\Debug\NAudio.dll
 C:\Users\Yan\Desktop\Player\Player\bin\Debug\NAudio.xml
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\bin\Debug\Player.exe.config
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\obj\Debug\Player.exe
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\obj\Debug\Player.pdb
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\obj\Debug\Player.csprojResolveAssemblyReference.cache
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\obj\Debug\Player.Player.resources
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\obj\Debug\Player.Properties.Resources.resources
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\obj\Debug\Player.SoundList.resources
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\obj\Debug\Player.csproj.GenerateResource.Cache
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\bin\Debug\Player.exe
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\bin\Debug\Player.pdb
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\bin\Debug\NAudio.dll
+C:\Users\anci_oq88\Desktop\Новая папка\Player\Player\bin\Debug\NAudio.xml

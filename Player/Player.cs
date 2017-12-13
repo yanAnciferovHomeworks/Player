@@ -20,7 +20,8 @@ namespace Player
         public event EventHandler TimeScroll;
         public event EventHandler Pause;
         public event EventHandler Stop;
-
+        public event EventHandler Next;
+        public event EventHandler Prev;
         public Player()
         {
             InitializeComponent();
@@ -72,5 +73,18 @@ namespace Player
         {
             Pause(sender, e);
         }
+
+        private void _prev_Click(object sender, EventArgs e)
+        {
+            Prev(sender,e);
+        }
+
+        private void _next_Click(object sender, EventArgs e)
+        {
+            Next(sender, e);
+        }
+
+
+       
     }
 }
