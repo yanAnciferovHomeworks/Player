@@ -16,10 +16,10 @@ namespace Player
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var player = new Player();
+            var player = new Pl();
             var playList = new SoundList();
             var presenter = new Presenters.PlayerPresenter(player, playList);
-            playList.Show();
+           // playList.Show();
             Application.Run(player);
         }
     }

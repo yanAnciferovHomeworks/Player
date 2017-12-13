@@ -18,6 +18,8 @@ namespace Player.Views
         event EventHandler TimeScroll;
         event EventHandler Next;
         event EventHandler Prev;
+        event EventHandler OnEndTrack;
+        event EventHandler CheckChanged;
         void SetName(string name);
         void SetTime(TimeSpan time);
         void SetTimePosition(int position);
@@ -43,6 +45,14 @@ namespace Player.Views
         event EventHandler DoubleClockOnTrack;
 
         event EventHandler OnSelectedTrack;
+
+        event EventHandler OnLoadClick;
+
+        event EventHandler OnSaveClick;
+
+        bool Visible { get; set; }
+
+        void UpdateList();
 
         void SetBindingData(BindingList<Track> controlBindings);
 

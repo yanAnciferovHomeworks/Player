@@ -35,6 +35,9 @@ namespace Player
         public event EventHandler OnSelectedTrack;
         public event EventHandler RemoveTrack;
         public event EventHandler DoubleClockOnTrack;
+        public event EventHandler OnLoadClick;
+        public event EventHandler OnSaveClick;
+
         public void AddTrackToList(Track track)
         {
             PlayList.Items.Add(track);
@@ -74,11 +77,26 @@ namespace Player
             }
         }
 
+        
+
         private void PlayList_SelectedIndexChanged(object sender, EventArgs e)
         {
             OnSelectedTrack(sender,e);
         }
 
+        private void Save_Click(object sender, EventArgs e)
+        {
+            OnSaveClick(sender, e);
+        }
 
+        private void Load_Click(object sender, EventArgs e)
+        {
+            OnLoadClick(sender, e);
+        }
+
+        public void UpdateList()
+        {
+            PlayList.Update();
+        }
     }
 }

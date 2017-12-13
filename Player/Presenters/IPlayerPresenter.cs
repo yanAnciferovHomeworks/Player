@@ -9,6 +9,7 @@ using Player.Views;
 using Player.Models;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.IO;
 
 namespace Player.Presenters
 {
@@ -33,13 +34,16 @@ namespace Player.Presenters
             _viewPlayer.Stop += _viewPlayer_Stop;
             _viewPlayer.Next += _viewPlayer_Next;
             _viewPlayer.Prev += _viewPlayer_Prev;
+            _viewPlayer.OnEndTrack += _viewPlayer_OnEndTrack;
+            _viewPlayer.CheckChanged += _viewPlayer_CheckChanged;
 
             _viewPlayList = viewPlayList;
             _viewPlayList.LoadTrack += _viewPlayList_Add;
             _viewPlayList.RemoveTrack += _viewPlayList_Remove;
             _viewPlayList.DoubleClockOnTrack += _viewPlayList_DoubleClockOnTrack;
             _viewPlayList.OnSelectedTrack += _viewPlayList_OnSelectedTrack;
-
+            _viewPlayList.OnLoadClick += _viewPlayList_OnLoadClick;
+            _viewPlayList.OnSaveClick += _viewPlayList_OnSaveClick;
             audioTimer = new Timer();
 
             _viewPlayList.SetBindingData(sounds.GetList);
@@ -50,9 +54,33 @@ namespace Player.Presenters
 
                 };
 
-            sounds.AddTrack(new Track(@"C:\Users\anci_oq88\Downloads\Leningrad_-_Ekstaz.mp3"));
-            sounds.AddTrack(new Track(@"C:\Users\anci_oq88\Downloads\Leningrad_-_Voyazh.mp3"));
-            sounds.AddTrack(new Track(@"C:\Users\anci_oq88\Downloads\Cold War Kids – First(novteh.co).mp3"));
+        }
+
+        private void _viewPlayer_CheckChanged(object sender, EventArgs e)
+        {
+            var check = sender as CheckBox;
+            _viewPlayList.Visible = check.Checked;
+        }
+
+        private void _viewPlayList_OnSaveClick(object sender, EventArgs e)
+        {
+            sounds.Save();
+        }
+
+        private void _viewPlayList_OnLoadClick(object sender, EventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Filter = "MyPlayer|*.mplr";
+            if (op.ShowDialog() == DialogResult.OK)
+            {
+               sounds = new PlayList(op.FileName);
+                _viewPlayList.SetBindingData(sounds.GetList);
+            }
+        }
+
+        private void _viewPlayer_OnEndTrack(object sender, EventArgs e)
+        {
+            _viewPlayer_Next(null, null);
         }
 
         void _viewPlayer_Prev(object sender, EventArgs e)
@@ -65,10 +93,9 @@ namespace Player.Presenters
             catch (InvalidateTrackException ex)
             {
                 audioTimer.Stop();
-                if (outputDevice != null)
-                    outputDevice.Stop();
-                MessageBox.Show("Плейлист закончился!");
-            
+                OnPlaybackStopped(null, null);
+                // MessageBox.Show("Плейлист закончился!");
+
                 _viewPlayList.SelectedIndex = 0;
                 _viewPlayer.SetName("");
                 _viewPlayer.SetTime(new TimeSpan(0));
@@ -94,9 +121,8 @@ namespace Player.Presenters
             catch (InvalidateTrackException ex)
             {
                 audioTimer.Stop();
-                MessageBox.Show("Плейлист закончился!");
-                if (outputDevice != null)
-                    outputDevice.Stop();
+                //MessageBox.Show("Плейлист закончился!");
+                OnPlaybackStopped(null, null);
                 _viewPlayList.SelectedIndex = 0;
                 _viewPlayer.SetName("");
                 _viewPlayer.SetTime(new TimeSpan(0));
@@ -111,7 +137,7 @@ namespace Player.Presenters
         {
             audioTimer.Stop();
             if (outputDevice != null)
-                outputDevice.Stop();
+                OnPlaybackStopped(null, null);
             _viewPlayer.SetName("");
             _viewPlayer.SetTime(new TimeSpan(0));
         }
@@ -158,6 +184,7 @@ namespace Player.Presenters
             {
                 
                 audioFile.CurrentTime = new TimeSpan(0,0,0,0, (int)((audioFile.TotalTime.TotalMilliseconds / 100) * (sender as TrackBar).Value));
+               
             }
         }
 
@@ -183,23 +210,32 @@ namespace Player.Presenters
             if (outputDevice != null)
             {
                 outputDevice.Stop();
-                outputDevice.PlaybackStopped -= OnPlaybackStopped;
                 OnPlaybackStopped(null, null);
             }
 
             CurrentTrack = sounds.Current;
 
-            _viewPlayer.SetTime(CurrentTrack.Length);
-            _viewPlayer.SetName(CurrentTrack.Name);
+            
 
             outputDevice = new WaveOutEvent();
-            outputDevice.PlaybackStopped += OnPlaybackStopped;
 
-            audioFile = new AudioFileReader(CurrentTrack.Path);
-            outputDevice.Init(audioFile);
+            try
+            {
+                audioFile = new AudioFileReader(CurrentTrack.Path);
+                _viewPlayer.SetTime(CurrentTrack.Length);
+                _viewPlayer.SetName(CurrentTrack.Name);
+                outputDevice.Init(audioFile);
+                audioTimer.Start();
+                outputDevice.Play();
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show("Трек по пути " + CurrentTrack.Path + " не найден!");
+                _viewPlayer_Next(null, null);
+            }
+           
 
-            audioTimer.Start();
-            outputDevice.Play();
+            
         }
 
 
@@ -241,6 +277,11 @@ namespace Player.Presenters
             if (audioFile != null)
                 audioFile.Dispose();
             audioFile = null;
+
+            if (args != null && args.Exception == null)
+            {
+                MessageBox.Show("sfd");
+            }
         }
 
     }
